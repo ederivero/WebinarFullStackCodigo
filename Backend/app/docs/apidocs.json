@@ -1,0 +1,351 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación de la API de SGP",
+    "version": "1.0.0",
+    "title": "SGP - CodiGo",
+    "contact": {
+      "email": "jorgegarba@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:5000",
+  "tags": [
+    {
+      "name": "proyecto",
+      "description": "Todas las rutas del modelo Proyecto"
+    },
+    {
+      "name": "mesa",
+      "description": "Todas las rutas para las mesas"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/proyecto": {
+      "get": {
+        "tags": [
+          "proyecto"
+        ],
+        "summary": "Obtiene todos los proyectos",
+        "description": "Retorna un arreglo del modelo Proyecto",
+        "operationId": "getProyectos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proyecto"
+              }
+            }
+          },
+          "500": {
+            "description": "El servidor no está disponible"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "proyecto"
+        ],
+        "summary": "Crea un registro del modelo Proyecto",
+        "description": "",
+        "operationId": "postProyecto",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of pet that needs to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Proyecto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Proyecto creado"
+          },
+          "402": {
+            "description": "El usuario no ha enviado los parametros correctamente"
+          }
+        }
+      }
+    },
+    "/proyecto/{id_proyecto}": {
+      "delete": {
+        "tags": [
+          "proyecto"
+        ],
+        "summary": "Elimina un proyecto",
+        "description": "",
+        "operationId": "deleteProyecto",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id_proyecto",
+            "in": "path",
+            "description": "Id del proyecto a borrar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "El proyecto fue borrado exitosamente"
+          },
+          "402": {
+            "description": "El id otorgado no existe en la BD"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "proyecto"
+        ],
+        "summary": "Edita un proyecto por su id",
+        "description": "",
+        "operationId": "updateProyecto",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id_proyecto",
+            "in": "path",
+            "description": "Id del proyecto a editar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "El proyecto fue borrado exitosamente"
+          },
+          "402": {
+            "description": "El id otorgado no existe en la BD"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "proyecto"
+        ],
+        "summary": "Devuelve un proyecto por su id",
+        "description": "",
+        "operationId": "getProyecto",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id_proyecto",
+            "in": "path",
+            "description": "Id del proyecto a buscar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "El proyecto"
+          },
+          "402": {
+            "description": "El id otorgado no existe en la BD"
+          }
+        }
+      }
+    },
+    "/mesa": {
+      "get": {
+        "tags": [
+          "mesa"
+        ],
+        "summary": "Devuelve todas las mesas",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Mesa"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "mesa"
+        ],
+        "summary": "Registra una nueva mesa",
+        "description": "Esta es una descripcion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Cuerpo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Mesa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mesa/{mesa_id}": {
+      "get": {
+        "tags": [
+          "mesa"
+        ],
+        "summary": "Devuelve un proyecto por su id",
+        "description": "",
+        "operationId": "getMesa",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mesa_id",
+            "in": "path",
+            "description": "Id del proyecto a buscar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "El proyecto"
+          },
+          "402": {
+            "description": "El id otorgado no existe en la BD"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "mesa"
+        ],
+        "summary": "Actualiza una mesa en particular",
+        "description": "",
+        "operationId": "putMesa",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mesa_id",
+            "in": "path",
+            "description": "Id del proyecto a buscar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Cuerpo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Mesa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Mesa": {
+      "type": "object",
+      "required": [
+        "mesa_nro",
+        "mesa_cap"
+      ],
+      "properties": {
+        "mesa_nro": {
+          "type": "string"
+        },
+        "mesa_cap": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Proyecto": {
+      "type": "object",
+      "required": [
+        "pro_nom",
+        "pro_fechin"
+      ],
+      "properties": {
+        "pro_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pro_nom": {
+          "type": "string"
+        },
+        "pro_fechin": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "pro_fechfin": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "pro_pres": {
+          "type": "number",
+          "format": "decimal(10,2)"
+        },
+        "pro_est": {
+          "type": "string",
+          "example": "activo"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
